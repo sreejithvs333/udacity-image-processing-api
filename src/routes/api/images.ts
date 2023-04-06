@@ -1,5 +1,5 @@
 import express from 'express';
-import {imageResize} from './../../utilities/sharp'
+import {imageGetOrResize} from './../../utilities/sharp'
 const images = express.Router();
 
 interface RequestQuery {
@@ -10,7 +10,7 @@ interface RequestQuery {
 
 images.get('/',(req: express.Request, res : express.Response)=>{
     const query: RequestQuery = req.query;
-    const image =  imageResize(query.fileName);
+    const image =  imageGetOrResize(query.fileName);
     image
     .then(path=>{
         console.log(path);
