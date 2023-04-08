@@ -25,7 +25,6 @@ const getImagePath = async (query: RequestQuery) => {
   if (!(await checkIfExist(fileFullPath))) {
     throw new Error("No such file exists.");
   }
-  // ############################//
 
   //checking if resized image is requested
   if (query.width && query.height) {
@@ -44,6 +43,7 @@ const getImagePath = async (query: RequestQuery) => {
   } else if (!query.width && query.height) {
     throw new Error("width missing");
   } else {
+    // no resizing required. Returing full image.
     return fileFullPath;
   }
 };
