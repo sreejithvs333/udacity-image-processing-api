@@ -1,5 +1,4 @@
-
 it("sample test", () => {
-    let number = 1;
-    expect(number).toEqual(1);
-})
+  let number = 1;
+  expect(number).toEqual(1);
+});
