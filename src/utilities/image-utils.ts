@@ -27,10 +27,14 @@ const getImagePath = async (query: RequestQuery) => {
             } else {
                 return await sharp.imageResizeAndSave(query);
             }
+        } else if(query.width && !query.height) {
+            throw new Error("height missing");
+        } else if(!query.width && query.height) {
+            throw new Error("width missing");
         }
         
     } else {
-        throw new Error("Input file missing");
+        throw new Error("Filename missing");
     }
     try {
         await checkIfExist(fileFullPath);
