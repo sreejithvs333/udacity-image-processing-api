@@ -1,7 +1,8 @@
 import path from "path";
 import { checkIfExist, getImagePath } from "../utilities/image-utils";
 import { RequestQuery } from "../utilities/types";
-
+import supertest from "supertest";
+import app from "..";
 describe("unit testing", () => {
   const filePath = path.resolve(__dirname, "../assets/images/full/fjord.jpg");
 
@@ -27,3 +28,11 @@ describe("unit testing", () => {
     expect(value).toBeTruthy();
   });
 });
+
+describe("Endpoint test", ()=> {
+  const request = supertest(app);
+  it("GET api/images should return 200 status", async ()=> {
+    const response = await request.get('/api/images?fileName=palmtunnel');
+    expect(response.status).toBe(200);
+  })
+})

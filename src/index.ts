@@ -8,3 +8,5 @@ app.use("/api", routes);
 app.listen(port, () => {
   console.log(`The server started at http://localhost:${port}`);
 });
+
+export default app;
