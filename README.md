@@ -1,5 +1,5 @@
 # udacity-image-processing-api
-A simple Nodejs image processing api project which uses typescrip & express
+A simple Nodejs image processing api project which uses typescript & express
 
 ## To build
 ```
