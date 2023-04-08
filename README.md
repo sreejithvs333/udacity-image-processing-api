@@ -3,6 +3,7 @@
 A simple Nodejs image processing api project which uses typescript & express
 
 ## Scripts
+
 1. Install dependencies
 
 ```
