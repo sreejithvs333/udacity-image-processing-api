@@ -14,7 +14,9 @@ describe("unit testing", () => {
 
   beforeAll(() => {
     console.log(
-      `\n The initial values are: \n\n querySuccess = ${JSON.stringify(querySuccess)}, \n\n filePath = ${filePath}`
+      `\n The initial values are: \n\n querySuccess = ${JSON.stringify(
+        querySuccess
+      )}, \n\n filePath = ${filePath}`
     );
   });
 
@@ -23,16 +25,16 @@ describe("unit testing", () => {
     expect(doesExist).toBe(true);
   });
 
-  it("getImagePath(querySuccess) to be truthy", async()=> {
+  it("getImagePath(querySuccess) to be truthy", async () => {
     const value = await getImagePath(querySuccess);
     expect(value).toBeTruthy();
   });
 });
 
-describe("Endpoint test", ()=> {
+describe("Endpoint test", () => {
   const request = supertest(app);
-  it("GET api/images should return 200 status", async ()=> {
-    const response = await request.get('/api/images?fileName=palmtunnel');
+  it("GET api/images should return 200 status", async () => {
+    const response = await request.get("/api/images?fileName=palmtunnel");
     expect(response.status).toBe(200);
-  })
-})
+  });
+});
