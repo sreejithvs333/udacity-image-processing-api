@@ -2,6 +2,12 @@
 
 A simple Nodejs image processing api project which uses typescript & express
 
+## Install dependencies
+
+```
+npm i
+```
+
 ## To build
 
 ```
