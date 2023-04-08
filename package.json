@@ -9,9 +9,11 @@
     "eslint": "npx eslint . --ext .ts",
     "debug": "nodemon --exec \"node --require ts-node/register --inspect=3001 src/index.ts\"",
     "build": "npx tsc & copyfiles --up 1 './src/assets/**' './dist'",
+    "timeout": "node -e \"require('node:timers/promises').setTimeout(3000)\"",
     "start": "nodemon src/index.ts",
+    "prod": "npm run build && npm run timeout && node dist/.",
     "jasmine": "jasmine",
-    "test": "npm run build & npm run jasmine"
+    "test": "npm run build && npm run timeout && npm run jasmine"
   },
   "author": "Sreejith",
   "license": "ISC",

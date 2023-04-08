@@ -16,12 +16,10 @@ This uses nodemon module for watching changes.
 npm run start
 ```
 
-_Note: always run build before production run or test_
-
 ## To run production
 
 ```
-node dist/.
+npm run prod
 ```
 
 ## To test
