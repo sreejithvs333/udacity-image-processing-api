@@ -1,18 +1,17 @@
 import sharp from "sharp";
-import fsPromises from "fs/promises";
 import path from "path";
 import { RequestQuery } from "./types";
 
 const imageResizeAndSave = async (query: RequestQuery) => {
-  let fileFullPath = path.resolve(
+  const fileFullPath = path.resolve(
     __dirname,
     `./../assets/images/full/${query.fileName}.jpg`
   );
-  let width = parseInt(query.width as string);
-  let height = parseInt(query.height as string);
-  let fileName = `${query.fileName}x${width}x${height}.jpg`;
+  const width = parseInt(query.width as string);
+  const height = parseInt(query.height as string);
+  const fileName = `${query.fileName}x${width}x${height}.jpg`;
 
-  let fileThumbPath = path.resolve(
+  const fileThumbPath = path.resolve(
     __dirname,
     `./../assets/images/thumb/${fileName}`
   );

@@ -23,8 +23,8 @@ const getImagePath = async (query: RequestQuery) => {
 
     //checking if resized image is requested
     if (query.width && query.height) {
-      let fileName = `${query.fileName}x${query.width}x${query.height}.jpg`;
-      let fileThumbPath = path.resolve(
+      const fileName = `${query.fileName}x${query.width}x${query.height}.jpg`;
+      const fileThumbPath = path.resolve(
         __dirname,
         `./../assets/images/thumb/${fileName}`
       );
