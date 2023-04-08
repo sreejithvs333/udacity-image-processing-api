@@ -17,10 +17,7 @@ const getImagePath = async (query: RequestQuery) => {
     throw new Error("Filename missing.");
   }
 
-  const fileFullPath = path.resolve(
-    __dirname,
-    `../assets/images/full/${query.fileName}.jpg`
-  );
+  const fileFullPath = path.resolve(__dirname, `../assets/images/full/${query.fileName}.jpg`);
 
   if (!(await checkIfExist(fileFullPath))) {
     throw new Error("No such file exists.");
@@ -29,10 +26,7 @@ const getImagePath = async (query: RequestQuery) => {
   //checking if resized image is requested
   if (query.width && query.height) {
     const fileName = `${query.fileName}x${query.width}x${query.height}.jpg`;
-    const fileThumbPath = path.resolve(
-      __dirname,
-      `../assets/images/thumb/${fileName}`
-    );
+    const fileThumbPath = path.resolve(__dirname, `../assets/images/thumb/${fileName}`);
     if (await checkIfExist(fileThumbPath)) {
       return fileThumbPath;
     } else {
@@ -48,4 +42,4 @@ const getImagePath = async (query: RequestQuery) => {
   }
 };
 
-export { getImagePath };
+export { getImagePath, checkIfExist };
