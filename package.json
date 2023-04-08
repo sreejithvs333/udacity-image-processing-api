@@ -6,7 +6,7 @@
   "scripts": {
     "prettier-check": "npx prettier --check .",
     "prettier": "npx prettier --write .",
-    "eslint": "npx eslint src/**/*.ts",
+    "eslint": "npx eslint . --ext .ts",
     "build": "npx tsc",
     "start": "nodemon src/index.ts",
     "jasmine": "jasmine",
@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.38.0",
     "nodemon": "^2.0.22",
-    "prettier": "2.8.7",
+    "prettier": "^2.8.7",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.3"
   },
