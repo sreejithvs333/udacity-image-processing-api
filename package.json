@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prettier-check":"npx prettier --check src/**/*.ts",
-    "prettier":"npx prettier --write src/**/*.ts",
+    "prettier-check": "npx prettier --check .",
+    "prettier": "npx prettier --write .",
     "eslint": "npx eslint src/**/*.ts",
     "build": "npx tsc",
     "start": "nodemon src/index.ts",
