@@ -1,7 +1,7 @@
 import path from "path";
 import fsPromises from 'fs/promises';
 import { RequestQuery } from "./types";
-
+import * as sharp from '../utilities/sharp';
 // Check if file exist
 const checkIfExist = async (filePath: string) => {
     try {
@@ -13,15 +13,28 @@ const checkIfExist = async (filePath: string) => {
 }
 
 const getImagePath = async (query: RequestQuery) => {
-    let filePath: string;
+    let fileFullPath: string;
+    
     if(query.fileName){
-        filePath = path.resolve(__dirname, `./../assets/images/${query.fileName}.jpg`);
+        fileFullPath = path.resolve(__dirname, `./../assets/images/full/${query.fileName}.jpg`);
+        
+        //checking if resized image is requested
+        if(query.width && query.height){
+            let fileName = `${query.fileName}x${query.width}x${query.height}.jpg`;
+            let fileThumbPath = path.resolve(__dirname, `./../assets/images/thumb/${fileName}`);
+            if(await checkIfExist(fileThumbPath)) {
+                return fileThumbPath;
+            } else {
+                return await sharp.imageResizeAndSave(query);
+            }
+        }
+        
     } else {
-        throw new Error("Filename must be given as query param");
+        throw new Error("Input file missing");
     }
     try {
-        await checkIfExist(filePath);
-        return filePath;
+        await checkIfExist(fileFullPath);
+        return fileFullPath;
     } catch (err) {
         if(err instanceof Error)
             return err.message;
@@ -29,4 +42,4 @@ const getImagePath = async (query: RequestQuery) => {
     }
 }
 
-export {getImagePath}
+export {getImagePath, checkIfExist}
