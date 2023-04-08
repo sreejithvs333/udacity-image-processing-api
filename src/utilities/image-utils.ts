@@ -18,7 +18,7 @@ const getImagePath = async (query: RequestQuery) => {
   if (query.fileName) {
     fileFullPath = path.resolve(
       __dirname,
-      `./../assets/images/full/${query.fileName}.jpg`
+      `../assets/images/full/${query.fileName}.jpg`
     );
 
     //checking if resized image is requested
@@ -26,7 +26,7 @@ const getImagePath = async (query: RequestQuery) => {
       const fileName = `${query.fileName}x${query.width}x${query.height}.jpg`;
       const fileThumbPath = path.resolve(
         __dirname,
-        `./../assets/images/thumb/${fileName}`
+        `../assets/images/thumb/${fileName}`
       );
       if (await checkIfExist(fileThumbPath)) {
         return fileThumbPath;
@@ -42,8 +42,12 @@ const getImagePath = async (query: RequestQuery) => {
     throw new Error("Filename missing");
   }
   try {
-    await checkIfExist(fileFullPath);
-    return fileFullPath;
+    if(await checkIfExist(fileFullPath)){
+      return fileFullPath;
+    } else {
+      throw new Error("File not found");
+    }
+    
   } catch (err) {
     if (err instanceof Error) return err.message;
     return String(err);

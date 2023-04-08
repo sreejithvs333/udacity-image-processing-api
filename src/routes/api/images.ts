@@ -1,6 +1,7 @@
 import express from "express";
 import * as ImageUtils from "../../utilities/image-utils";
 import * as CustomTypes from "./../../utilities/types";
+import path from "path";
 const images = express.Router();
 
 // returns the requested file
@@ -8,7 +9,7 @@ images.get("/", async (req: express.Request, res: express.Response) => {
   const query: CustomTypes.RequestQuery = req.query;
   try {
     const imagePath = await ImageUtils.getImagePath(query);
-    res.status(200).sendFile(imagePath);
+    res.status(200).sendFile(path.resolve(__dirname,imagePath));
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).send(err.message);
