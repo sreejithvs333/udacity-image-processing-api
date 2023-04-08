@@ -29,7 +29,7 @@ npm run prettier
 ```
 npm run prettier-check
 ```
-## For Linting
+## For linting
 ```
 npm run eslint
 ```
