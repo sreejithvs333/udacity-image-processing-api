@@ -5,7 +5,7 @@ import * as sharp from "../utilities/sharp";
 // Check if file exist
 const checkIfExist = async (filePath: string) => {
   try {
-    await fsPromises.access(filePath);
+    const value = await fsPromises.access(filePath);
     return true;
   } catch (error) {
     return false;
@@ -49,8 +49,7 @@ const getImagePath = async (query: RequestQuery) => {
     }
     
   } catch (err) {
-    if (err instanceof Error) return err.message;
-    return String(err);
+    throw err;
   }
 };
 

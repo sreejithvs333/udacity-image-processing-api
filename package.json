@@ -7,7 +7,7 @@
     "prettier-check": "npx prettier --check .",
     "prettier": "npx prettier --write .",
     "eslint": "npx eslint . --ext .ts",
-    "debug": "nodemon --inspect --exec 'ts-node' src/index.ts",
+    "debug": "nodemon --exec \"node --require ts-node/register --inspect=3001 src/index.ts\"",
     "build": "npx tsc & copyfiles --up 1 './src/assets/**' './dist'",
     "start": "nodemon src/index.ts",
     "jasmine": "jasmine",
