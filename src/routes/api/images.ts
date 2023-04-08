@@ -9,7 +9,7 @@ images.get("/", async (req: express.Request, res: express.Response) => {
   const query: CustomTypes.RequestQuery = req.query;
   try {
     const imagePath = await ImageUtils.getImagePath(query);
-    res.status(200).sendFile(path.resolve(__dirname,imagePath));
+    res.status(200).sendFile(path.resolve(__dirname, imagePath));
   } catch (err) {
     if (err instanceof Error) {
       res.status(400).send(err.message);
