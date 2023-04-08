@@ -8,12 +8,20 @@ A simple Nodejs image processing api project which uses typescript & express
 npm run build
 ```
 
-## To run
+## To run development
 
 This uses nodemon module for watching changes.
 
 ```
 npm run start
+```
+
+_Note: always run build before production run or test_
+
+## To run production
+
+```
+node dist/.
 ```
 
 ## To test
