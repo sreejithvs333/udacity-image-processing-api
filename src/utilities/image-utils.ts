@@ -5,7 +5,7 @@ import * as sharp from "../utilities/sharp";
 // Check if file exist
 const checkIfExist = async (filePath: string) => {
   try {
-    await fsPromises.access(filePath);
+    await fsPromises.access(path.resolve(__dirname, filePath));
     return true;
   } catch (error) {
     return false;
