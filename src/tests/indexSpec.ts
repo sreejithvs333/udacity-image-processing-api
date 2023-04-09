@@ -4,8 +4,8 @@ import { RequestQuery } from "../utilities/types";
 import supertest from "supertest";
 import app from "..";
 import fsPromises from "fs/promises";
-import fs from 'fs';
-import * as sharp from '../utilities/sharp';
+import fs from "fs";
+import * as sharp from "../utilities/sharp";
 
 describe("unit testing", () => {
   const filePath = path.resolve(__dirname, "../assets/images/full/fjord.jpg");
@@ -33,8 +33,8 @@ describe("unit testing", () => {
     expect(value).toBeTruthy();
   });
 
-  it("imageResizeAndSave() should create a resized file", async ()=> {
-    const fileThumbPath = path.resolve(__dirname, "../assets/images/thumb/palmtunnelx200x200.jpg")
+  it("imageResizeAndSave() should create a resized file", async () => {
+    const fileThumbPath = path.resolve(__dirname, "../assets/images/thumb/palmtunnelx200x200.jpg");
     try {
       // delete the file if already exist
       await fsPromises.access(path.resolve(__dirname, fileThumbPath));
@@ -43,9 +43,8 @@ describe("unit testing", () => {
     } catch (error) {
       await sharp.imageResizeAndSave(querySuccess);
     }
-    
+
     expect(await fsPromises.access(fileThumbPath)).not.toBeInstanceOf(Error);
-    
   });
 });
 
