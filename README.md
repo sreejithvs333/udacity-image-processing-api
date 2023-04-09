@@ -51,3 +51,26 @@ npm run prettier-check
 ```
 npm run eslint
 ```
+
+## Endpoint
+
+http://localhost:3000/api/images
+
+Expected query params:
+
+1. filename: any of the following filenames can be used
+   1. encenadaport
+   2. fjord
+   3. icelandwaterfall
+   4. palmtunnel
+   5. santamonica
+2. width: positive Number
+3. height: positive Number
+
+### Example full image
+
+http://localhost:3000/api/images?fileName=palmtunnel
+
+### Example thumb image
+
+http://localhost:3000/api/images?fileName=palmtunnel&height=200&width=200
